@@ -13,7 +13,7 @@ module.exports = function(options) {
         gulp.src(options.src),
         $.if(isDevelopment, $.sourcemaps.init()),
         $.less(),
-        $.if(!isDevelopment , cleanCss()),
+        $.csso(),
         $.if(isDevelopment, $.sourcemaps.write()),
         gulp.dest('public')
     ).on('error', $.notify.onError());
