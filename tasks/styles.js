@@ -11,12 +11,10 @@ module.exports = function(options) {
   return function() {
     return combine(
         gulp.src(options.src),
-        $.if(isDevelopment, $.sourcemaps.init()),
         $.less(),
+        $.autoprefixer(),
         $.csso(),
-        $.if(isDevelopment, $.sourcemaps.write()),
-        gulp.dest('public')
+        gulp.dest('public/styles')
     ).on('error', $.notify.onError());
   };
-
 };
